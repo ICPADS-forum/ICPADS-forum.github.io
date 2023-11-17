@@ -1,0 +1,22 @@
+/* table-style.css */
+.cvpr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+.cvpr-table th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+}
+
+.cvpr-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.cvpr-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
