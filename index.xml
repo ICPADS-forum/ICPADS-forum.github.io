@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算力年会</title>
+    <link>https://www.example.org/</link>
+    <description>Recent content on 算力年会</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://www.example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>会议日程</title>
+      <link>https://www.example.org/schedule/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.example.org/schedule/</guid>
+      <description>&lt;!DOCTYPE html&gt;海花岛会议日程海花岛12月20日（周三）会议议程时间活动类型主讲人/描述8:30 - 8:45开场联想金鑫总8:45 - 9:15报告 1中科大 李会民9:15 - 9:45报告 2南大 姚舸9:45 - 10:15报告 3联想赞助报告10:15 - 10:45茶歇10:45 - 11:15报告 4北大 樊春11:15 - 11:45报告 5上海交大 林新华12:00 - 1:30午餐+午休1:30 - 2:00报告 6济南超算 郭猛2:00 - 2:30报告 7复旦大学 ？？2:30 - 3:00报告 8成都超算 郑亮3:00 - 3:30报告 9华东师大 胡文心3:30 - 4:00茶歇4:00 - 4:30报告 10郑州超算 尚远4:30 - 5:00报告 11华南理工 黄建波5:00 - 5:30报告 12华中农大 刘浩5:30 - 6:00报告 13兰州大学 张洋 ？？</description>
+    </item>
+    <item>
+      <title>参会嘉宾</title>
+      <link>https://www.example.org/guest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.example.org/guest/</guid>
+      <description>&lt;!DOCTYPE html&gt;参会嘉宾姚舸高级工程师，独立负责e-Science中心。长期从事超算的设计建设和运营，教学科研和管理的数字化服务等工作。 &amp;times;姚舸高级工程师，独立负责e-Science中心...报告题目：e-Science中心为什么胡文心计算机科学与技术专业博士，华东师范大学教授级高级工程师。中国计算机学会高性能计算专业委员会委员、全国高等学校计算机教育研究会青少年分会副理事长、上海市计算机学会高性能计算专业委员会副主任委员兼秘书长。 &amp;times;胡文心计算机科学与技术专业博士，华东师范大学教授级高级工程师。中国计算机学会高性能计算专业委员会委员、全国高等学校计算机教育研究会青少年分会副理事长、上海市计算机学会高性能计算专业委员会副主任委员兼秘书长。 主要研究方向是智能数据分析与高性能计算。在国内外核心刊物和国际会议发表学术论文SCI/EI 检索论文40余篇。获得多项发明专利授权、数十项软件著作权。作为项目责任人主持了1项国家科技支撑项目、多项教育部产学研协同育人项目、省部级教改项目和众多国内外企事业单位合作项目。参与国家自然科学基金项目、国家高技术研究发展计划(863)、973计划项目等多个国家级和省部级科研项目。报告题目：高性能计算支撑教育教学的探索摘要：数字经济时代，算力已被证明是第一生产力，而高性能计算被公认为第三大科学研究方法。在国家重大战略需求的驱动下，多学科交叉汇聚与多技术跨界融合将成为常态，同时对高校的人才培养提出了创新课程设计、跨学科合作的要求。华东师范大学高性能计算平台在支撑卓越学术的同时，持续服务于学校的卓越育人行动，推动育人模式的创新升级。本报告介绍华东师范大学将高性能计算作为一个与学科融合、与技术发展密切相关的平台，在创新教学模式、推动人才培养方面的探索。林新华博士，高级工程师、博士生导师、上海交通大学网络信息中心副主任、CCF高专委常务委员、上海市计算机学会SCS高专委主任。任何问题请联系我们！</description>
+    </item>
+  </channel>
+</rss>
