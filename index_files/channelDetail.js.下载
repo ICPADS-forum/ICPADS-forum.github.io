@@ -1,0 +1,17 @@
+var single_detail;
+$(function(){
+    //单条数据
+    $.ajax({
+        url: config.get_web_url() + '/api/newsAll.action',
+        data: {channelId: channelId},
+        dataType: "jsonp",
+        jsonp: "jsoncallback",
+        async: false,
+        type: 'get',
+        success: function (data) {
+            console.log('----------------------栏目详情')
+            console.log(data[0])
+            single_detail = data[0];
+        }
+    })
+})

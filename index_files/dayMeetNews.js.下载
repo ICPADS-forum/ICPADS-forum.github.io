@@ -1,0 +1,197 @@
+var dayMeetNews;
+var guestInfo;
+let newarr;
+var idone;
+var yuyuearr;
+var cookieItem;
+var ssojwttokenitem;
+var liveIditem;
+var prompttext;
+var codeId;
+var liveUrl;
+var pingjiaurlitem;
+var pingjiaurldata;
+$(function(){
+
+
+function getAllCookies() {
+    var cookies = document.cookie.split(';');
+    var cookieValues = {};
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      var separatorIndex = cookie.indexOf('=');
+      var cookieName = cookie.substring(0, separatorIndex);
+      var cookieValue = cookie.substring(separatorIndex + 1);
+      cookieValues[cookieName] = cookieValue;
+    }
+    return cookieValues;
+  }
+  
+  // 使用示例
+  var allCookies = getAllCookies();
+  cookieItem=allCookies._s_ua
+  ssojwttokenitem=allCookies.ssojwttoken
+  console.log(cookieItem,ssojwttokenitem,'获取登录的cookie');
+})
+
+
+
+
+
+
+
+
+
+$(function(){
+
+    //列表详情
+    $.ajax({
+        url:"/conf/apiActivity/getNews.action",
+        data:{mettingId:globalId,id:dayMeetNewsId,urlId:urlId},
+        dataType:"json",
+        async:false,
+        type: 'get',
+        success: function (data) {
+            console.log(data);
+            dayMeetNews = data.data[0];
+            let g = JSON.parse(JSON.stringify(dayMeetNews.guestInfo));
+            guestInfo = sortByKey(g,'speechOrder',true)
+        }
+    });
+   
+
+})
+
+$(function(){
+    //会议日程
+    $.ajax({
+        url:"/conf/apiActivity/get.action",
+        //url: "http://192.168.0.41:9090/conf/apiActivity/get.action",
+        data:{mettingId:globalId},
+        dataType:"json",
+        //jsonpCallback:"jsoncallback",
+        async:false,
+        type: 'get',
+        success: function (data) {
+            let arr=[]
+            for (let k in data.data) {
+                for(i=0;i<data.data[k].length;i++){
+                    console.log(data.data[k][i],'循环的数据三四岁')
+                    arr.push(data.data[k][i])
+                    
+                // for(j=0;j<i.length;i++){
+                //     console.log(i,'循环的数据三四岁')
+                // }
+            }
+            }
+            console.log(arr,'pushnew值')
+           
+            for(i=0;i<arr.length;i++){
+                if(arr[i].id==dayMeetNews.id){
+                    newarr=arr[i].signupType
+                    idone=arr[i].signupId
+                    yuyuearr=arr[i]
+                    if(arr[i].activityLive.length>0){
+                        let arrp=[]
+                        arr[i].activityLive.forEach((item)=>{
+                            if(item.liveSource=='3'){
+                                arrp.push(item)
+                                liveIditem=arrp[0].liveId
+                                console.log(arrp,'过滤出来的liveSource=3')
+                            }
+                        })
+                            
+
+                       
+                    }
+                    console.log(newarr,'truefalse')
+                }
+            }
+            // getList = data.data;
+
+            
+        }
+    });
+})
+
+sortByKey = (array, key, order) => {
+    return array.sort(function (a, b) {
+        var x = a[key]; var y = b[key];
+        if (order) {
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+        } else {
+            return ((x < y) ? ((x > y) ? 1 : 0) : -1);
+        }
+    });
+}
+
+function dateFormat(fmt, date) {
+    let ret;
+    const opt = {
+        "Y+": date.getFullYear().toString(),        // 年
+        "m+": (date.getMonth() + 1).toString(),     // 月
+        "d+": date.getDate().toString(),            // 日
+        "H+": date.getHours().toString(),           // 时
+        "M+": date.getMinutes().toString(),         // 分
+        "S+": date.getSeconds().toString()          // 秒
+        // 有其他格式化字符需求可以继续添加，必须转化成字符串
+    };
+    for (let k in opt) {
+        ret = new RegExp("(" + k + ")").exec(fmt);
+        if (ret) {
+            fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+        }
+    }
+    return fmt;
+}
+
+$(function(){
+    console.log(liveIditem,'获取的直播id')
+    var jsonData = {
+        activityId: dayMeetNewsId,
+        liveId: liveIditem,
+      };
+    //百家云直播
+    $.ajax({
+        url:"https://conf.ccf.org.cn/live-api/live/v2/use_ticket.do",
+        contentType: 'application/json;charset=utf-8',
+        data:JSON.stringify(jsonData),
+        // headers: {
+        //     'access-token': ssojwttokenitem
+        //   },
+        dataType:"json",
+        async:false,
+        type: 'post',
+        xhrFields: {
+            withCredentials: true // 启用跨域携带cookie
+       },
+        success: function (data) {
+            prompttext=data.msg
+            codeId=data.code
+            liveUrl=data.data
+
+            console.log(data.msg);
+            
+        }
+    });
+   
+
+})
+$(function(){
+    $.ajax({
+        type: "post",
+        url: "https://conf.ccf.org.cn/evaluate-api/evaluate/ifHaveBtn2?meetingId="+globalId+"&applyForumId="+dayMeetNewsId,
+        async:false,
+        success: function (data) {
+            pingjiaurlitem=data.code
+            pingjiaurldata=data.data
+            console.log(data.data,'pingjia')
+
+           
+           
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("跳转评价失败");
+        }
+    });
+})

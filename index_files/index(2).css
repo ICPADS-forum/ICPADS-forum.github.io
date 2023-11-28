@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
+    <title></title>
+    <link rel="stylesheet" href="/web/html6/css/jquery.bxslider.css"/>
+    <link rel="stylesheet" href="/web/common/css/share.min.css"/>
+    <link rel="stylesheet" href="/web/html6/css/reset.css"/>
+    <link rel="stylesheet" href="/web/html6/css/index.css"/>
+</head>
+<body>
+<div id="app" style="display: none;">
+    <div id="header"></div>
+<!--    <div class="banner width1200">-->
+<!--        <img src="/web/html6/images/banner.png"/>-->
+<!--    </div>-->
+
+    <template v-if="index_img.length>1">
+        <div class="banner width1200">
+            <div class="slider6">
+                <div class="slide" v-for="item in index_img">
+                    <a :href="item.IMG_BTN_PATH" :title="item.IMG_BTN_NAME" target="_blank">
+                        <img :src="webUrl + item.IMG_PATH">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template v-else>
+        <div class="banner width1200">
+        <img v-if="index_img[0]&&index_img[0].IMG_PATH" :src="webUrl + index_img[0].IMG_PATH"/>
+        <img v-else src="/web/html6/images/banner.jpg"/>
+        </div>
+    </template>
+    <div class="cncc" v-if="meetingName=='CNCC2021'">
+        <img src="/web/html16/images/组11.png?v=1" alt="">
+    </div>
+    <div class="box">
+         <div class="navigation container" >
+                <template v-if="index_img.length>0">
+            
+                <a v-if="index_img[0].﻿IMG_BTN_NAME1!=null&&index_img[0].﻿IMG_BTN_NAME1!=''" :href="index_img[0].IMG_BTN_PATH1" target="_blank" style="display: ﻿﻿inline-block">
+                    
+                         {{index_img[0].﻿IMG_BTN_NAME1}}
+                </a>
+            
+                <a v-if="index_img[0].﻿IMG_BTN_NAME2!=null&&index_img[0].﻿IMG_BTN_NAME2!=''" :href="index_img[0].IMG_BTN_PATH2" target="_blank" style="display: ﻿﻿inline-block">
+                    
+                         {{index_img[0].﻿IMG_BTN_NAME2}}
+                </a>
+                <a v-if="index_img[0].﻿IMG_BTN_NAME3!=null&&index_img[0].﻿IMG_BTN_NAME3!=''" :href="index_img[0].IMG_BTN_PATH3" target="_blank" style="display: ﻿﻿inline-block">
+                    
+                         {{index_img[0].﻿IMG_BTN_NAME3}}
+                </a>
+                </template>
+            
+    </div>
+    </div>
+   
+
+    <div class="l_bgimg">
+        <template v-if="index_data.length>0" v-for="template in index_data">
+            <template v-if="(template.TEMPLATE_NAME.indexOf('会议动态')>-1)&&template.COLUMN_TYPE!='4'">
+                <div data-move-x="-200px">
+                    <div class="width1200">
+                        <p class="l_partTitle1">
+                            <span v-cloak>{{template.CHANNEL_NAME}}</span>
+                            <a :href="'/web/html6/HYDT.html?channelId='+template.ID+'&globalId=' + globalId" class="l_more">查看更多+</a>
+                        </p>
+                        <ul class="index_news clearfix">
+                            <template v-if="template.LIST.length>0" v-for="(item,index) in template.LIST">
+                            <li v-cloak>
+                                <a :href="'/web/html6/detail.html?channelId=' + template.ID +'&CmsId=' + item.ID + '&globalId=' + globalId" >
+                                    <div class="news_img">
+                                        <img v-if="item.FILE_F.length>0" :src="webUrl + item.FILE_F[0].PATH" />
+                                        <img v-else src="/web/html6/images/l_news_default.jpg" />
+                                    </div>
+                                    <h3 :href="'/web/html6/detail.html?channelId=' + template.ID +'&CmsId=' + item.ID + '&globalId=' + globalId" v-html="item.TITLE"></h3>
+                                    <p>
+                                        <img src="/web/html6/images/l_news_time.png" class="l_news_time"/>
+                                        {{item.CREATE_TIME1|subTime}}
+                                        <!-- <span class="share right"></span> -->
+                                    </p>
+
+                                </a>
+                            </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </template>
+            <template v-if="(template.TEMPLATE_NAME.indexOf('演讲嘉宾')>-1)&&template.COLUMN_TYPE!='4'">
+                <div data-move-x="-200px">
+                    <div class="width1200">
+                        <p class="l_partTitle1">
+                            <span v-cloak>{{template.CHANNEL_NAME}}</span>
+                            <a :href="'/web/html6/JB_LIST.html?channelId='+template.ID+'&globalId=' + globalId" class="l_more">查看更多+</a>
+                        </p>
+                        <!--<ul class="index_tabul">
+                            <template v-for="item in column_3">
+                                <li v-if="item.SUPER_CHANNEL == template.ID">{{item.CHANNEL_NAME}}</li>
+                            </template>
+                        </ul>-->
+                        <div class="index_tab" style="display: block;background: none;" >
+                            <div class="clearfix">
+                                <template v-for="(item,index) in template.LIST">
+                                    <a :href="'/web/html6/JBdetail.html?channelId=' + item.CHANNEL_ID + '&CmsId=' + item.ID + '&globalId=' + globalId">
+                                        <span class="l_jbImg">
+                                            <img :src="webUrl + item.FILE_PICTURE[0].PATH"/>
+                                        </span>
+                                        <p class="speaker_p1" v-html="item.NAME_THE"></p>
+                                        <p class="speaker_p2" v-html="item.MORE_TEXT"></p>
+                                    </a>
+                                    <div v-if="(index+1)%5==0" class="clearfix l_pcshow_block"></div>
+                                    <div v-if="(index+1)%2==0" class="clearfix l_phoneshow_block"></div>
+                                </template>
+                            </div>
+    <!--                        <p class="l_speaker_tip">讲者持续更新中...</p>-->
+                        </div>
+                     </div>
+                </div>
+            </template>
+            <template v-if="(template.TEMPLATE_NAME.indexOf('合作单位')>-1)&&template.COLUMN_TYPE!='4'">
+                <div class="" data-move-x="-200px" v-if="afterArr.length>0">
+                    <div class="width1200">
+                        <p class="l_partTitle1">
+                            <span v-cloak>{{template.CHANNEL_NAME}}</span>
+                        </p>
+                        <div class="l_index_cooper clearfix">
+                           
+                            <template v-if="template.LIST.length>0" v-for="(item,index) in afterArr">
+                                <h3  class="l_indexa">{{item.name}}</h3>
+                              <div class="l_indexb">
+                                   <div v-for="(item,index) in item.data">
+                                     
+                                <a v-if="item.TO_HREF" :href="item.TO_HREF" target="_blank">
+                                    <template v-if="item.FILE_.length>0">
+                                       <img :src="webUrl +  item.FILE_[0].PATH"/>
+                                    </template>
+                                </a>
+                                <a v-else href="javascript:void(0)">
+                                    <template v-if="item.FILE_.length>0">
+                                       <img :src="webUrl +  item.FILE_[0].PATH"/>
+                                    </template>
+                                </a>
+                                </div>
+                              </div>
+                               
+                               
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template v-if="template.COLUMN_TYPE=='4'&&(template.CHANNEL_NAME.indexOf('通用模板')<0)">
+                <div data-move-x="-200px">
+                    <div class="width1200">
+                        <p class="l_partTitle1">
+                            <span v-cloak>{{template.CHANNEL_NAME}}</span>
+                        </p>
+                        <template v-if="template.LIST.length>0" v-for="(item,index) in template.LIST">
+                        <div class="index_article clearfix" v-html="item.MAIN_BODY"></div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </div>
+    <div class="footer" id="footer"></div>
+</div>
+<script type="text/javascript" src="/web/html6/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/web/common/js/moment.js"></script>
+<script type="text/javascript" src="/web/util/conf/config.js"></script>
+<script type="text/javascript" src="/web/html6/js/common.js"></script>
+<script type="text/javascript" src="/web/html6/js/indexPage.js"></script>
+<script type="text/javascript" src="/web/common/js/vue.js"></script>
+<script type="text/javascript" src="/web/common/js/jquery.share.min.js"></script>
+<script type="text/javascript" src="/web/html6/js/render.js?v=7311211111111"></script>
+<!--<script type="text/javascript" src="/web/html6/js/share.js"></script>-->
+<script type="text/javascript" src="/web/html6/js/jquery.bxslider.js"></script>
+</body>
+</html>
