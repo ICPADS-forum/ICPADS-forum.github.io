@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.example.org/guest/</loc>
+  </url><url>
     <loc>https://www.example.org/authors/</loc>
   </url><url>
     <loc>https://www.example.org/categories/</loc>
@@ -9,8 +11,6 @@
     <loc>https://www.example.org/tags/</loc>
   </url><url>
     <loc>https://www.example.org/schedule/</loc>
-  </url><url>
-    <loc>https://www.example.org/guest/</loc>
   </url><url>
     <loc>https://www.example.org/</loc>
   </url>
