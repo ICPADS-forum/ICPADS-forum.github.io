@@ -1447,18 +1447,18 @@ a {
 	line-height: 30px;
 }
 /*-------------2020-2-26 lmx  版本号 头部固定*/
-.header_left{
+.header_left {
 	font-size: 25px;
 	font-weight: bold;
-	float: left;
 	padding-left: 10px;
-	/*padding: 16px 0 15px 10px;*/
-	/*width: 510px;*/
 	overflow: hidden;
-	/*height: 80px;*/
 	position: relative;
 	line-height: 86px;
-}
+	display: block; /* 设置为块级元素 */
+	width: 700px; /* 明确的宽度 */
+	margin: 0 auto; /* 水平居中 */
+  }
+  
 .header_left i{
 	font-style: normal;
 	display: inline-block;
@@ -1468,6 +1468,7 @@ a {
 	white-space: nowrap;
 	vertical-align: top;
 }
+
 
 .service{margin: 20px 0px;font-size: 18px;}
 #header{

@@ -905,6 +905,9 @@ body {
     border: 1px solid #ddd;
     margin-bottom: 50px;
     margin-top: 20px;
+    width: 70%; /* 设置表格的宽度为父容器宽度的80% */
+    max-width: 1000px; /* 设置表格的最大宽度 */
+    min-width:900px; /* 设置表格的最小宽度 */
 }
 
 .lx_table th {
@@ -917,6 +920,9 @@ body {
 .lx_table th:first-child {
     text-align: center;
     padding-left: 0;
+}
+.lx_table td:nth-child(3) {
+    width: 25%; /* 或者您希望的具体宽度 */
 }
 
 .lx_table td {
