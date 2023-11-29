@@ -948,19 +948,19 @@ body {
     width: 132px;
     height: 128px;
     position: relative;
-    /* background: url('/web/html16/images/border-bg.png') no-repeat;*/
     background-size: 100% 100%;
 }
 
 .lx_picBox>img {
     position: absolute;
-    max-width: 112px;
-    max-height: 112px;
+    width: 112px; /* 使用固定宽度而不是 max-width */
+    height: 112px; /* 使用固定高度而不是 max-height */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 50%;
+    border-radius: 50%; /* 保持圆形边界 */
 }
+
 
 .lx_chairText {
     padding-left: 163px;
