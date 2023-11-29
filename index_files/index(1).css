@@ -949,17 +949,22 @@ body {
     height: 128px;
     position: relative;
     background-size: 100% 100%;
+    overflow: hidden; /* 隐藏超出容器的部分 */
+    border-radius: 50%; /* 设置圆形边框 */
 }
 
-.lx_picBox>img {
+.lx_picBox > img {
+    width: 112px; /* 固定宽度 */
+    height: 112px; /* 固定高度 */
+    object-fit: cover; /* 覆盖整个容器，可能会裁剪图片 */
     position: absolute;
-    width: 112px; /* 使用固定宽度而不是 max-width */
-    height: 112px; /* 使用固定高度而不是 max-height */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%; /* 保持圆形边界 */
 }
+
+
 
 
 .lx_chairText {
